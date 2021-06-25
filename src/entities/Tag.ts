@@ -5,10 +5,13 @@ import { v4 as uuid } from 'uuid'
 export class Tag {
   @PrimaryColumn()
   readonly id: string
+
   @Column()
   name: string
+
   @CreateDateColumn()
   created_at: Date
+  
   @UpdateDateColumn()
   updated_at: Date
 
