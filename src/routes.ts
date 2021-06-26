@@ -1,17 +1,18 @@
 import { Router } from 'express'
-import { CreateUserController, CreateTagController, AuthenticateUserController, CreateComplimentController } from './controllers'
+import { CreateUserController, CreateTagController, AuthenticateUserController, CreateComplimentController, ListComplimentsController } from './controllers'
 import { ensureAdmin, ensureAuthenticate } from './middlewares'
 
-const router = Router()
+export const router = Router()
 
 const createUserController = new CreateUserController()
 const createTagController = new CreateTagController()
 const authenticateUserController = new AuthenticateUserController()
 const createComplimentController = new CreateComplimentController()
+const listComplimentsController = new ListComplimentsController()
 
 router.post('/users', createUserController.handle)
 router.post('/tags', ensureAuthenticate, ensureAdmin, createTagController.handle)
 router.post('/login', authenticateUserController.handle)
 router.post('/compliments', ensureAuthenticate, createComplimentController.handle)
-
-export { router }
+router.get('/users/compliments/send', ensureAuthenticate, listComplimentsController.handleListSended)
+router.get('/users/compliments/recive', ensureAuthenticate, listComplimentsController.handleListReceived)
