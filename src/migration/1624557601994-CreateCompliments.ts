@@ -1,6 +1,6 @@
 import { MigrationInterface, QueryRunner, Table } from 'typeorm'
 
-export class CreateCompliments1624557601994 implements MigrationInterface {
+export class CreateCompliments1624497962647 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
@@ -16,7 +16,7 @@ export class CreateCompliments1624557601994 implements MigrationInterface {
             type: 'uuid',
           },
           {
-            name: 'user_reciver',
+            name: 'user_receiver',
             type: 'uuid',
           },
           {
@@ -35,29 +35,29 @@ export class CreateCompliments1624557601994 implements MigrationInterface {
         ],
         foreignKeys: [
           {
-            name: "FKUserSenderCompliments",
-            referencedTableName: "users",
-            referencedColumnNames: ["id"],
-            columnNames: ["user_sender"],
-            onDelete: "SET NULL",
-            onUpdate: "SET NULL",
+            name: 'FKUserSenderCompliments',
+            referencedTableName: 'users',
+            referencedColumnNames: ['id'],
+            columnNames: ['user_sender'],
+            onDelete: 'SET NULL',
+            onUpdate: 'SET NULL',
           },
           {
             name: 'FKUserReciverCompliments',
             referencedTableName: 'users',
             referencedColumnNames: ['id'],
-            columnNames: ["user_reciver"],
-            onDelete: "SET NULL",
-            onUpdate: "SET NULL"
+            columnNames: ['user_receiver'],
+            onDelete: 'SET NULL',
+            onUpdate: 'SET NULL',
           },
           {
             name: 'FKTagCompliments',
             referencedTableName: 'tags',
             referencedColumnNames: ['id'],
-            columnNames: ["tag_id"],
-            onDelete: "SET NULL",
-            onUpdate: "SET NULL"
-          }
+            columnNames: ['tag_id'],
+            onDelete: 'SET NULL',
+            onUpdate: 'SET NULL',
+          },
         ],
       })
     )
