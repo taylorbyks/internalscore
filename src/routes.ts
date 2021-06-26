@@ -21,7 +21,7 @@ const listTagsController = new ListTagsController()
 const listUsersController = new ListUsersController()
 
 router.post('/users', createUserController.handle)
-router.get('/users', ensureAuthenticate, ensureAdmin, listUsersController.handle)
+router.get('/users', ensureAuthenticate, listUsersController.handle)
 router.post('/tags', ensureAuthenticate, ensureAdmin, createTagController.handle)
 router.get('/tags', ensureAuthenticate, listTagsController.handle)
 router.post('/login', authenticateUserController.handle)
